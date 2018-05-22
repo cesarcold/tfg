@@ -1,0 +1,101 @@
+<?
+session_start();
+$homepage=true;
+include("inc/restrict.php");
+include "inc/functions.php";
+
+ ?><!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+<title>TFG</title>
+</head>
+
+<body>
+ <div class="navbar navbar-default navbar-fixed-top"></div>
+    <div id="headerwrap"> <div class="patient"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<h1>Bienvenido</h1>
+				 
+                 <p>
+                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla arcu leo, vehicula sed lorem lobortis, rutrum faucibus lacus. Pellentesque at lorem quis dui hendrerit facilisis vitae in purus. Nam urna est, suscipit in ex sed, la</p>
+                 	
+				</div><!-- /col-lg-6 -->
+				<div class="col-lg-6">
+			 
+				</div><!-- /col-lg-6 -->
+				
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+    <script type="text/javascript" src="cordova.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAbT4Q4_JjtGXj6OPayKjLttbqsnUBcuGs",
+    authDomain: "tfgalfa01.firebaseapp.com",
+    databaseURL: "https://tfgalfa01.firebaseio.com",
+    projectId: "tfgalfa01",
+    storageBucket: "tfgalfa01.appspot.com",
+    messagingSenderId: "229149759092"
+  };
+  firebase.initializeApp(config);
+  
+  const messaging = firebase.messaging();
+  messaging.usePublicVapidKey("AAAANVpj1nQ:APA91bEG2gOZqu-NQSzkY5ajwHSCnKw30B_jjC3UimQhNwEWvcxtTtctEkRl6pMyZwPTSzLgFooqN5gAMjNWUjt5PvwGhGWgHVPvQHBnNDY-1qf0c2_fZsNMKlJHuBZYAZzaNzkUAHyX");
+
+  messaging.requestPermission().then(function() {
+  console.log('Notification permission granted.');
+  // TODO(developer): Retrieve an Instance ID token for use with FCM.
+  // ...
+}).catch(function(err) {
+  console.log('Unable to get permission to notify.', err);
+});
+  
+  
+  messaging.getToken().then(function(currentToken) {
+  if (currentToken) {
+    sendTokenToServer(currentToken);
+    updateUIForPushEnabled(currentToken);
+  } else {
+    // Show permission request.
+    console.log('No Instance ID token available. Request permission to generate one.');
+    // Show permission UI.
+    updateUIForPushPermissionRequired();
+    setTokenSentToServer(false);
+  }
+}).catch(function(err) {
+  console.log('An error occurred while retrieving token. ', err);
+  showToken('Error retrieving Instance ID token. ', err);
+  setTokenSentToServer(false);
+});
+  
+</script>
+ <script src="js/index.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/functions.js"></script>     <footer></footer>
+  <script>
+  var homepage=true;
+ 
+    $(function(){
+	 // if(!	 loadProfile() ){document.location='login.html';}
+	 loadProfile()
+	 loadnavbar();
+	 })
+ 
+ app.initialize()
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,102 @@
+ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+ 
+<title>TFG</title>
+</head>
+
+<body><div class="loading">Loading&#8230;</div>
+  <div class="navbar navbar-default navbar-fixed-top"></div>
+    <div id="headerwrap"> <div class="patient"></div>
+		<div class="container">
+			<!-- /col-lg-6 -->
+				<div class="col-lg-6">
+			 <div class="hygienecontainer"></div>
+				</div><!-- /col-lg-6 -->
+				
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+    <audio  src="audio/blop.mp3" id="blop">
+ 
+    
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAbT4Q4_JjtGXj6OPayKjLttbqsnUBcuGs",
+    authDomain: "tfgalfa01.firebaseapp.com",
+    databaseURL: "https://tfgalfa01.firebaseio.com",
+    projectId: "tfgalfa01",
+    storageBucket: "tfgalfa01.appspot.com",
+    messagingSenderId: "229149759092"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAbT4Q4_JjtGXj6OPayKjLttbqsnUBcuGs",
+    authDomain: "tfgalfa01.firebaseapp.com",
+    databaseURL: "https://tfgalfa01.firebaseio.com",
+    projectId: "tfgalfa01",
+    storageBucket: "tfgalfa01.appspot.com",
+    messagingSenderId: "229149759092"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/functions.js"></script>     <footer></footer>
+  <script>
+  var homepage=true;
+ 
+    $(function(){
+	 // if(!	 loadProfile() ){document.location='login.html';}
+	 loadProfile()
+	 loadnavbar();
+	
+ 
+	 $.ajax({url:path+"ajax/gethygiene.php",type:"POST",data:"tkn="+localStorage.getItem("USRTOKEN"),success:function(r){
+	 	 $(".hygienecontainer").html(r);
+		 
+		 $("input[name='checked']").change(function(e){
+		 _checked=$(e.currentTarget).is(":checked");
+		 if(_checked){$(".hidden").css('visibility','visible').hide().fadeIn().removeClass('hidden');}
+		 })
+ $("input[name='wound']").click(
+	
+function(e){
+	if($("input[name='wound']:checked").val()=="1"){
+			$(".fotoherida").slideDown()
+		
+	}else{
+	if($(".fotoherida").is(":visible")){
+		$(".fotoherida").slideUp()
+	}
+	}
+	
+}
+)
+
+	 $(".b_sendhygiene").click(function(e){
+//habria que validar esto
+
+		 if(!$("input[name='checked']").prop('checked')){alerta("Debe validar la higiene")}else{
+		 if($("input[name='cream']").is(":checked")){_cream=1;}else{_cream=0;}
+		 
+	sendhygiene(idpaciente,$("input[name='checked']").val(),$("input[name='wound']:checked").val(),$("input[name='wound']:checked").val(),_cream,$("input[name='type']:checked").val());
+		} })
+	 
+ }
+  }) })
+     </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+ 
+<title>TFG</title>
+</head>
+
+<body><div class="loading">Loading&#8230;</div>
+  <div class="navbar navbar-default navbar-fixed-top"></div>
+    <div id="headerwrap"> <div class="patient"></div>
+		<div class="container">
+			<!-- /col-lg-6 -->
+				<div class="col-lg-6">
+			 <div class="questionscontainer"></div>
+				</div><!-- /col-lg-6 -->
+				
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+    <audio  src="audio/blop.mp3" id="blop">
+ 
+    
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAbT4Q4_JjtGXj6OPayKjLttbqsnUBcuGs",
+    authDomain: "tfgalfa01.firebaseapp.com",
+    databaseURL: "https://tfgalfa01.firebaseio.com",
+    projectId: "tfgalfa01",
+    storageBucket: "tfgalfa01.appspot.com",
+    messagingSenderId: "229149759092"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAbT4Q4_JjtGXj6OPayKjLttbqsnUBcuGs",
+    authDomain: "tfgalfa01.firebaseapp.com",
+    databaseURL: "https://tfgalfa01.firebaseio.com",
+    projectId: "tfgalfa01",
+    storageBucket: "tfgalfa01.appspot.com",
+    messagingSenderId: "229149759092"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/functions.js"></script>     <footer></footer>
+  <script>
+  var homepage=true;
+ 
+    $(function(){
+	 // if(!	 loadProfile() ){document.location='login.html';}
+	 loadProfile()
+	 loadnavbar();
+	 })
+ 
+	 var ids
+	 $.ajax({url:path+"ajax/getquestions.php",type:"POST",data:"tkn="+localStorage.getItem("USRTOKEN"),success:function(r){
+		 $(".questionscontainer").html(r);
+ ids=($("#questionids").val()).split(",")
+ 
+ $(".b_sendquestions").click(enviarrespuestas)
+
+  }})
+	 
+	 
+	 function enviarrespuestas(){
+	 	 var ajaxsent=0;
+	 var ajaxok=ids.length;
+	 cargando();
+	 $.each(ids,function(k,v){ 
+	 console.log(v)
+	 $.ajax({url:path+"ajax/setquestions.php",type:"POST",data:"usrtoken="+localStorage.getItem("USRTOKEN")+"&question="+v+"&patient="+idpaciente+"&answer="+$("input[name='respuesta"+v+"']:checked").val(),success:function(r){
+	 respuesta=r.split("-");
+	 if(respuesta[0].replace(" ","")=="1"){
+	 ajaxsent++;
+	 if(ajaxsent==ajaxok){
+	 cargado();
+	 document.location.reload();
+	 }
+	 }
+	 }
+	 
+	 })
+	 
+	 
+		 })
+	 }
+	 
+	
+ 
+     </script>
+</body>
+</html>

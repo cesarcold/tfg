@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "229149759092",
+    "firebase_url": "https://tfgalfa01.firebaseio.com",
+    "project_id": "tfgalfa01",
+    "storage_bucket": "tfgalfa01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229149759092:android:d6887cf5ac95b38c",
+        "android_client_info": {
+          "package_name": "com.phonegap.tfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229149759092-cgo5143o18tpgpd6edf9n1o445kvs39l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRY0jpHiiQHwQzcFU2FCxCxh1fcSvl9G8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
