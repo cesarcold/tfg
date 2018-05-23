@@ -36,6 +36,7 @@
 	<plugin name="cordova-plugin-splashscreen" source="npm" />
   <variable name="SENDER_ID" value="229149759092" />
 </plugin>
+	<splash src="res/screens/android/drawable-port-xxhdpi-screen.png" />  
 <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1" />
 <gap:plugin name="cordova-plugin-badge" version="0.7.4" source="npm" />
    <platform name="android">
