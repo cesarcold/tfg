@@ -298,6 +298,9 @@ function trylogin(){
 				});if($(".mensajes").is(":visible")){
 				$(".mensajes").slideUp()
 				}
+			if($(".enviados").is(":visible")){
+				$(".enviados").slideUp()
+				}
 			
 			}
 
@@ -486,4 +489,11 @@ function logout(){localStorage.removeItem("USRTOKEN"); document.location='login.
 	 
   
 	 if(!localStorage.getItem("USRTOKEN")){ document.location='login.html'}}
+
+
+function showsent(){$(".enviados").slideDown();
+				   if($(".mensajes").is(":visible")){
+				$(".mensajes").slideUp()
+				}
+				   }
  
