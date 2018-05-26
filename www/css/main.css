@@ -182,9 +182,7 @@ card {
     height: 96px;
     margin: 0 auto 10px;
     display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+  
 }
 
 /*
@@ -1153,3 +1151,4 @@ label input[type="radio"],label input[type="checkbox"]{display:none;}
 
 #formvital label{display:block;}
 
+.logohome{max-width: 150px;}
