@@ -149,6 +149,7 @@ function trylogin(){
 				})
 				
 			$("#material"+_meal+" input:checked").replaceWith('<span class="glyphicon glyphicon-ok activo"></span> ');
+					$("#material"+_meal+" .fa").remove()
 				$("a[data-rel="+_meal+"]").parent().addClass("lleno");
 				$("a[data-rel="+_meal+"]").prepend('<span class="glyphicon glyphicon-ok"></span>')	
 				cargado();
@@ -167,6 +168,7 @@ function trylogin(){
 				//todo en orden --supongo que habrá que borrar  o inhabilitar el boton
 				$(".b_sendmealintake[data-id='water']").unbind("click").css("opacity",.5)
 							$(".b_sendmealintake[data-id='water']").unbind("click").css("opacity",.5).fadeOut();
+				
 				$.each($("#materialwater input:not(:checked)"),function(k,v){
 					
 					$(v).parent().remove();
@@ -175,6 +177,7 @@ function trylogin(){
 				
 			$("#materialwater input:checked").replaceWith('<span class="glyphicon glyphicon-ok activo"></span> ');
 				$("a[data-rel=water]").parent().addClass("lleno");
+					$("#materialwater .fa").remove()
 				$("a[data-rel=water]").prepend('<span class="glyphicon glyphicon-ok"></span>')	
 				cargado();
 				}else{

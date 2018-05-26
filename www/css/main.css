@@ -1059,6 +1059,16 @@ background-color:#c5f3a0;display: block; margin-right:10px;
 float: left; margin-bottom:15px;
 }
 
+.headermed{background-image: url('../img/icons/if_pot-love-pills_2903209.png');
+border-radius:50%; width:80px; height:80px; background-repeat:no-repeat;  background-position:center center;background-size: auto 70%;
+background-color:#c5f3a0;display: block; margin-right:10px;
+float: left; margin-bottom:15px;
+}
+.headerquestions{background-image: url('../img/icons/if_question_298853.png');
+border-radius:50%; width:80px; height:80px; background-repeat:no-repeat;  background-position:center center;background-size: auto 70%;
+background-color:#1fbeea;display: block; margin-right:10px;
+float: left; margin-bottom:15px;
+}
 
 
 
@@ -1068,4 +1078,78 @@ float: left; margin-bottom:15px;
     border-color: #276b2b;
 }
 .enviados{display:none;}
+
+@media (min-width: 768px){
+.container {
+    width: 100%;
+}
+.navbar > .container .navbar-brand {
+   margin-left: 0;
+}
+.navbar-header {
+	background: transparent;
+	
+}
+
+.navbar-nav {position: absolute;}
+.navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+}
+
+.material li {background: transparent;}
+.material ol{    padding-left: 3px;}
+.material .toggle {margin-top:30px;}
+
+
+
+label.btn span {
+  font-size: 1.5em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+    color: #ffffff;  display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: #7AA3CC;
+}
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #fff;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #7AA3CC;
+}
+
+.b_sendhygiene{margin-top:50px;}
+
+ 
+label input[type="radio"],label input[type="checkbox"]{display:none;}
+
+#formvital label{display:block;}
 

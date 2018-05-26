@@ -5,9 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-toggle.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
- 
+ <link href="css/fontawesome.css" rel="stylesheet">
 <title>TFG</title>
 </head>
 
@@ -42,7 +43,8 @@
  
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/functions.js"></script>     <footer></footer>
+
+<script src="js/functions.js"></script>  <script src="js/bootstrap-toggle.min.js"></script>    <footer></footer>
   <script>
   var homepage=true;
  
@@ -55,9 +57,13 @@
 	 $.ajax({url:path+"ajax/gethygiene.php",type:"POST",data:"tkn="+localStorage.getItem("USRTOKEN"),success:function(r){
 	 	 $(".hygienecontainer").html(r);
 		 
+		 $("input[name='checked']").bootstrapToggle({width:'100%'});
 		 $("input[name='checked']").change(function(e){
 		 _checked=$(e.currentTarget).is(":checked");
-		 if(_checked){$(".hidden").css('visibility','visible').hide().fadeIn().removeClass('hidden');}
+		 if(_checked){$(".hidden").css('visibility','visible').hide().fadeIn().removeClass('hidden');}else{
+			 
+			 
+		 }
 		 })
  $("input[name='wound']").click(
 	
@@ -86,127 +92,25 @@ function(e){
  }
   }) })
      </script>
-     
-     <script type="text/javascript" charset="utf-8">
+      <script src="cordova.js"></script>
+     <script>
 
         var pictureSource;   // picture source
         var destinationType; // sets the format of returned value
 
         // Wait for Cordova to load
         //
-        document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady () {
+     alert("Calling onDeviceReady()");
+    }
 
-        // Cordova is ready
-        //
-function onDeviceReady() {
-    pictureSource=navigator.camera.PictureSourceType;
-    destinationType=navigator.camera.DestinationType;
-}
+    setTimeout(function () {	alert("KK")
+            document.addEventListener('deviceready', onDeviceReady, false);
+	
+    }, 900);
 
-
-        function browse(){
-            navigator.camera.getPicture(uploadPhoto,
-                                        function(message) { alert('get picture failed'); },
-                                        { quality: 50,
-                                        destinationType: navigator.camera.DestinationType.FILE_URI,
-                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
-                                        );
-        }
-
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
-
-            var params = {};
-            params.value1 = "test";
-            params.value2 = document.getElementById('file_name').value + "";
-            params.value3 = document.getElementById('file_description').value + "";
-            options.params = params;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("path/upload.php"), win, fail, options);
-        }
-
-        function win(r) {
-            console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);
-        }
-
-        function onFileSystemSuccess(fileSystem) {
-            console.log(fileSystem.name);
-        }
-
-        function onResolveSuccess(fileEntry) {
-            console.log(fileEntry.name);
-        }
-
-        function fail(evt) {
-            console.log(evt.target.error.code);
-        }
-
-
-        function fail(error) {
-            alert("An error has occurred: Code = " + error.code);
-            console.log("upload error source " + error.source);
-            console.log("upload error target " + error.target);
-        }
-
-
-
-
-
-
-function capturePhoto() {
-  // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-    destinationType: destinationType.DATA_URL });
-}
-
-function onPhotoDataSuccess(imageData) {
-  // console.log(imageData);
-
-  var smallImage = document.getElementById('smallImage');
-  smallImage.style.display = 'block';
-  smallImage.src = "data:image/jpeg;base64," + imageData;
-
-  var smallTEXT = document.getElementById('smallTEXT');
-  smallTEXT.style.display = 'block';
-  smallTEXT.innerHTML = "data:image/jpeg;base64," + imageData;
-}
-
-function onPhotoURISuccess(imageURI) {
-  // Uncomment to view the image file URI 
-  // console.log(imageURI);
-
-  // Get image handle
-  //
-  var largeImage = document.getElementById('largeImage');
-
-  // Unhide image elements
-  //
-  largeImage.style.display = 'block';
-
-  largeImage.src = imageURI;
-}
-function capturePhoto() {
-  // Take picture using device camera and retrieve image as base64-encoded string
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-    destinationType: destinationType.DATA_URL });
-}
-
-
-
-// Called if something bad happens.
-// 
-function onFail(message) {
-  alert('Failed because: ' + message);
-}
-
-
-
+   
+console.log("JJJ")
 
 
 
