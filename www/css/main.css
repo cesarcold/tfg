@@ -1077,30 +1077,6 @@ float: left; margin-bottom:15px;
 }
 .enviados{display:none;}
 
-@media (min-width: 768px){
-.container {
-    width: 100%;
-}
-.navbar > .container .navbar-brand {
-   margin-left: 0;
-}
-.navbar-header {
-	background: transparent;
-	
-}
-
-.navbar-nav {position: absolute;}
-.navbar-nav .open .dropdown-menu {
-    position: static;
-    float: none;
-    width: auto;
-    margin-top: 0;
-    background-color: transparent;
-    border: 0;
-    box-shadow: none;
-}
-
-}
 
 .material li {background: transparent;}
 .material ol{    padding-left: 3px;}
@@ -1152,3 +1128,48 @@ label input[type="radio"],label input[type="checkbox"]{display:none;}
 #formvital label{display:block;}
 
 .logohome{max-width: 150px;}
+
+.opt1 {background-image: url('../img/icons/if_pot-love-pills_2903209.png');}
+.opt2 {background-image: url('../img/icons/if_11_375254.png');}
+.opt3 {background-image: url('../img/icons/if_Food_C225_2427885.png');}
+.opt4 {background-image: url('../img/icons/if_Toilet-Paper_1531893.png');}
+.opt5 {background-image: url('../img/icons/bath.png');}
+.opt6 {background-image: url('../img/icons/if_heart_1055045.png');}
+.opt7 {background-image: url('../img/icons/if_weather-10_1530382.png');}
+.opt8 {background-image: url('../img/icons/if_chat_1055095.png');}
+.opt9 {background-image: url('../img/icons/if_address-book_299084.png');}
+
+
+
+
+@media (min-width: 768px){
+.container {
+    width: 100%;
+}
+.navbar > .container .navbar-brand {
+   margin-left: 0;
+}
+.navbar-header {
+	background: transparent;
+	
+}
+	.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #b8e4ba;
+    background-color: #e7e7e700;
+}
+
+.navbar-nav {position: absolute; right:0;    z-index: 7777;}
+	.navbar-right{    top: 34px; z-index: 7776;
+    right: 15px;}
+.navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: #00b1ec;
+    border: 0;
+    box-shadow: none;
+}
+	.dropdown-menu > li > a { padding-right:110px;}
+
+}

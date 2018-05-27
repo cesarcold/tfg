@@ -499,4 +499,17 @@ function showsent(){$(".enviados").slideDown();
 				$(".mensajes").slideUp()
 				}
 				   }
+
+
+$.getScript("../node_modules/pulltorefreshjs/dist/pulltorefresh.min.js", function() {
+ 
+		var ptr = PullToRefresh.init({
+  mainElement: 'body',
+  onRefresh: function(){ window.location.reload(); }
+});
+
+
+	
+	
+})
  
