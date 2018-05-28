@@ -82,142 +82,155 @@ function(e){
 
 	 $(".b_sendhygiene").click(function(e){
 //habria que validar esto
-
+	
 		 if(!$("input[name='checked']").prop('checked')){alerta("Debe validar la higiene")}else{
 		 if($("input[name='cream']").is(":checked")){_cream=1;}else{_cream=0;}
-		 
-	sendhygiene(idpaciente,$("input[name='checked']").val(),_cream,$("input[name='wound']:checked").val(),$("input[name='type']:checked").val());
+		 alert($("input[name='photo']").val());
+	sendhygiene(idpaciente,$("input[name='checked']").val(),_cream,$("input[name='wound']:checked").val(),$("input[name='type']:checked").val(),$("input[name='photo']").val());
 		} })
 	 
  }
   }) })
      </script>
-      <script src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
-+
-+        var pictureSource;   // picture source
-+        var destinationType; // sets the format of returned value
-+
-+        // Wait for Cordova to load
-+        //
-+        document.addEventListener("deviceready", onDeviceReady, false);
-+
-+        // Cordova is ready
-+        //
-+function onDeviceReady() {
-+    pictureSource=navigator.camera.PictureSourceType;
-+    destinationType=navigator.camera.DestinationType;
-+}
-+
-+
-+        function browse(){
-+            navigator.camera.getPicture(uploadPhoto,
-+                                        function(message) { alert('get picture failed'); },
-+                                        { quality: 50,
-+                                        destinationType: navigator.camera.DestinationType.FILE_URI,
-+                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
-+                                        );
-+        }
-+
-+        function uploadPhoto(imageURI) {
-+            var options = new FileUploadOptions();
-+            options.fileKey="file";
-+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-+            options.mimeType="image/jpeg";
-+
-+            var params = {};
-+            params.value1 = "test";
-+            params.value2 = document.getElementById('file_name').value + "";
-+            params.value3 = document.getElementById('file_description').value + "";
-+            options.params = params;
-+
-+            var ft = new FileTransfer();
-+            ft.upload(imageURI, encodeURI(path+"upload.php"), win, fail, options);
-+        }
-+
-+        function win(r) {
-+            console.log("Code = " + r.responseCode);
-+            console.log("Response = " + r.response);
-+            console.log("Sent = " + r.bytesSent);
-+        }
-+
-+        function onFileSystemSuccess(fileSystem) {
-+            console.log(fileSystem.name);
-+        }
-+
-+        function onResolveSuccess(fileEntry) {
-+            console.log(fileEntry.name);
-+        }
-+
-+        function fail(evt) {
-+            console.log(evt.target.error.code);
-+        }
-+
-+
-+        function fail(error) {
-+            alert("An error has occurred: Code = " + error.code);
-+            console.log("upload error source " + error.source);
-+            console.log("upload error target " + error.target);
-+        }
-+
-+
-+
-+
-+
-+
-+function capturePhoto() {
-+  // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-+  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-+    destinationType: destinationType.DATA_URL });
-+}
-+
-+function onPhotoDataSuccess(imageData) {
-+  // console.log(imageData);
-+
-+  var smallImage = document.getElementById('smallImage');
-+  smallImage.style.display = 'block';
-+  smallImage.src = "data:image/jpeg;base64," + imageData;
-+
-+  var smallTEXT = document.getElementById('smallTEXT');
-+  smallTEXT.style.display = 'block';
-+  smallTEXT.innerHTML = "data:image/jpeg;base64," + imageData;
-+}
-+
-+function onPhotoURISuccess(imageURI) {
-+  // Uncomment to view the image file URI 
-+  // console.log(imageURI);
-+
-+  // Get image handle
-+  //
-+  var largeImage = document.getElementById('largeImage');
-+
-+  // Unhide image elements
-+  //
-+  largeImage.style.display = 'block';
-+
-+  largeImage.src = imageURI;
-+}
-+function capturePhoto() {
-+  // Take picture using device camera and retrieve image as base64-encoded string
-+  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-+    destinationType: destinationType.DATA_URL });
-+}
-+
-+
-+
-+// Called if something bad happens.
-+// 
-+function onFail(message) {
-+  alert('Failed because: ' + message);
-+}
-+
-+
-+
-+
-+
-+
-+
-+        </script>
+     
+     <script>
+
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+ var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd = '0'+dd
+} 
+
+if(mm<10) {
+    mm = '0'+mm
+} 
+
+today = mm + '-' + dd + '-' + yyyy;
+        // Wait for Cordova to load
+        //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // Cordova is ready
+        //
+function onDeviceReady() {  
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType=navigator.camera.DestinationType;
+}
+
+
+        function browse(){
+            navigator.camera.getPicture(uploadPhoto,
+                                        function(message) { alert('get picture failed'); },
+                                        { quality: 50,
+                                        destinationType: navigator.camera.DestinationType.FILE_URI,
+                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                        );
+        }
+
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+            var params = {};
+            params.idpaciente = idpaciente;
+           params.filename=idpaciente+"_"+today;
+            options.params = params;
+
+            var ft = new FileTransfer();
+	 
+		 	$("input[name='photo']").val(params.filename);
+		 $('#smallImage').css('display', 'block');
+$('#smallImage').attr('src', imageURI);
+            ft.upload(imageURI, encodeURI(path+"upload.php"), win, fail, options);	alert($("input[name='photo']").val());
+        }
+
+        function win(r) {
+		
+              console.log("Code = " + r.responseCode);
+              console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+		
+        }
+
+        function onFileSystemSuccess(fileSystem) {
+            console.log(fileSystem.name);
+        }
+
+        function onResolveSuccess(fileEntry) {
+            console.log(fileEntry.name);
+        }
+
+        function fail(evt) {
+            console.log(evt.target.error.code);
+        }
+
+
+        function fail(error) {
+            alert("An error has occurred: Code = " + error.code);
+            console.log("upload error source " + error.source);
+            console.log("upload error target " + error.target);
+        }
+
+
+
+
+
+ 
+function onPhotoDataSuccess(imageData) {
+ alert(imageData);
+
+ 
+$('#smallImage').css('display', 'block');
+$('#smallImage').attr('src', "data:image/jpeg;base64," + imageData);
+
+ /* var smallTEXT = document.getElementById('smallTEXT');
+  smallTEXT.style.display = 'block';
+  smallTEXT.innerHTML = "data:image/jpeg;base64," + imageData;*/
+}
+
+function onPhotoURISuccess(imageURI) {
+  // Uncomment to view the image file URI 
+  // console.log(imageURI);
+
+  // Get image handle
+  //
+ 
+uploadPhoto(imageURI)
+  // Unhide image elements
+  //
+ 
+  $('#largeImage').css('display', 'block');
+$('#largeImage').attr('src', imageURI);
+}
+function capturePhoto() {
+  // Take picture using device camera and retrieve image as base64-encoded string+
+ 
+  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    destinationType: destinationType.FILE_URI });
+}
+
+
+
+// Called if something bad happens.
+// 
+function onFail(message) {
+  alert('Failed because: ' + message);
+}
+
+
+
+
+
+
+
+        </script>
      
 </body>
 </html>
