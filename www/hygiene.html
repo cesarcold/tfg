@@ -148,7 +148,7 @@ function onDeviceReady() {
 		 	$("input[name='photo']").val(params.filename);
 		 $('#smallImage').css('display', 'block');
 $('#smallImage').attr('src', imageURI);
-            ft.upload(imageURI, encodeURI(path+"upload.php"), win, fail, options);	alert($("input[name='photo']").val());
+            ft.upload(imageURI, encodeURI(path+"upload.php"), win, fail, options);	//alert($("input[name='photo']").val());
         }
 
         function win(r) {
@@ -221,7 +221,7 @@ function capturePhoto() {
 // Called if something bad happens.
 // 
 function onFail(message) {
-  alert('Failed because: ' + message);
+ // alert('Failed because: ' + message);
 }
 
 
