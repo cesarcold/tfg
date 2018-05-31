@@ -85,7 +85,7 @@ function(e){
 	
 		 if(!$("input[name='checked']").prop('checked')){alerta("Debe validar la higiene")}else{
 		 if($("input[name='cream']").is(":checked")){_cream=1;}else{_cream=0;}
-		 alert($("input[name='photo']").val());
+		// alert($("input[name='photo']").val());
 	sendhygiene(idpaciente,$("input[name='checked']").val(),_cream,$("input[name='wound']:checked").val(),$("input[name='type']:checked").val(),$("input[name='photo']").val());
 		} })
 	 
